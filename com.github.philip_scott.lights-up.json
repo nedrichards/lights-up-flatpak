@@ -1,0 +1,45 @@
+{
+	"app-id": "com.github.philip_scott.lights-up",
+	"base": "io.elementary.BaseApp",
+	"base-version": "juno-19.08",
+	"runtime": "org.gnome.Platform",
+	"runtime-version": "3.36",
+	"sdk": "org.gnome.Sdk",
+	"command": "com.github.philip-scott.lights-up",
+	"copy-icon": true,
+	"rename-icon": "com.github.philip-scott.lights-up",
+	"rename-desktop-file": "com.github.philip-scott.lights-up.desktop",
+	"rename-appdata-file": "com.github.philip-scott.lights-up.appdata.xml",
+	"finish-args": [
+		"--device=dri",
+		"--socket=wayland",
+		"--socket=x11",
+		"--share=ipc",
+		"--share=network",
+		"--own-name=com.github.philip-scott.lights-up"
+	],
+	"cleanup": [
+		"/include",
+		"/lib/pkgconfig",
+		"/share/vala",
+		"/man",
+		"*.a",
+		"*.la"
+	],
+	"modules": [
+		{
+			"name": "lights-up",
+			"buildsystem": "meson",
+			"sources": [{
+					"type": "git",
+					"url": "https://github.com/Philip-Scott/Lights-Up.git",
+					"commit": "480494af46eb4d553ad9e9772123c1d534186c8b"
+				},
+				{
+					"type": "patch",
+					"path": "elementary-theme.patch"
+				}
+			]
+		}
+	]
+}

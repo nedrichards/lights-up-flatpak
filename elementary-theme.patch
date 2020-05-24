@@ -1,0 +1,52 @@
+diff --git a/data/com.github.philip-scott.lights-up.appdata.xml b/data/com.github.philip-scott.lights-up.appdata.xml
+index a67eeb4..e78923a 100644
+--- a/data/com.github.philip-scott.lights-up.appdata.xml
++++ b/data/com.github.philip-scott.lights-up.appdata.xml
+@@ -10,17 +10,23 @@
+         <binary>com.github.philip-scott.lights-up</binary>
+     </provides>
+     <screenshots>
++      <screenshot type="default">
++        <caption>The main window</caption>
++        <image type="source" width="1184" height="938">https://raw.githubusercontent.com/nedrichards/lights-up-flatpak/lights-up-screenshot.png</image>
++      </screenshot>
+     </screenshots>
+     <description>
+-        <p></p>
++        <p>Control your Philips Hue lights from your desktop.</p>
+     </description>
+-    <url type="homepage"></url>
+-    <url type="bugtracker"></url>
+-    <url type="help"></url>
+-    <update_contact></update_contact>
++    <releases>
++    	<release date="2019-05-07" version="480494af46eb4d553ad9e9772123c1d534186c8b" />
++    </releases>
++    <content_rating type="oars-1.1" />
++    <url type="homepage">https://github.com/Philip-Scott/Lights-Up/</url>
++    <url type="bugtracker">https://github.com/Philip-Scott/Lights-Up/issues</url>
+     <custom>
+         <value key="x-appcenter-color-primary"></value>
+         <value key="x-appcenter-color-primary-text"></value>
+         <value key="x-appcenter-suggested-price">1</value>
+     </custom>
+-</component>
+\ No newline at end of file
++</component>
+diff --git a/src/Application.vala b/src/Application.vala
+index 8ec1e1f..feee084 100644
+--- a/src/Application.vala
++++ b/src/Application.vala
+@@ -36,8 +36,10 @@ public class LightsUp.Application : Granite.Application {
+             default_theme.add_resource_path ("/com/github/philip-scott/lights-up/icons");
+ 
+             window = new LightsUp.Window (this);
++            Gtk.Settings.get_default().set_property("gtk-theme-name", "elementary");
++            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
+             add_window (window);
+             window.show_all ();
+         }
+     }
+-}
+\ No newline at end of file
++}
